@@ -1,4 +1,4 @@
-package com.apirest.startApi.model.usuario;
+package com.apirest.startApi.model.endereco;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -22,7 +22,9 @@ public class Endereco {
     private Long id;
     private String logradouro;
     private String cidade;
-    private String estado;
+    private String uf;
+    private String complemento;
+    private String numero;
     private String bairro;
     private String cep;
 }

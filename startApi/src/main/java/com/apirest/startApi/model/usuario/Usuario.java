@@ -1,10 +1,14 @@
 package com.apirest.startApi.model.usuario;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Table(name = "usuarios")
+@Entity(name = "Usuario")
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,4 +22,12 @@ public class Usuario {
     private String cpf;
     private boolean ativo;
     // private List<Endereco> enderecos;
+
+    public Usuario(DadosCadastroUsuario dados){
+        this.ativo = true;
+        this.nome = dados.nome();
+        this.email = dados.email();
+        this.senha = dados.senha();
+        this.cpf = dados.cpf();
+    }
 }

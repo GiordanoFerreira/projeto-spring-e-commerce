@@ -1,4 +1,4 @@
-package com.apirest.startApi.model.usuario;
+package com.apirest.startApi.model.endereco;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -15,13 +15,13 @@ import jakarta.transaction.Transactional;
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
-    
+
     @Autowired
     private UsuarioRepository repository;
 
     @PostMapping
     @Transactional
-    public void cadastro(@RequestBody DadosCadastroUsuario dados){
+    public void cadastro(@RequestBody DadosCadastroUsuario dados) {
         repository.save(new Usuario(dados));
     }
 }

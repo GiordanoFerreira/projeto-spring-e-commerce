@@ -5,12 +5,17 @@ import java.util.List;
 
 import com.apirest.startApi.model.endereco.Endereco;
 
+import java.util.List;
+import java.util.ArrayList;
+
+import com.apirest.startApi.model.endereco.Endereco;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -24,17 +29,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Usuario {
-    
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
     private String email;
     private String senha;
     private String cpf;
     private boolean ativo;
-
-    @OneToMany(mappedBy = "usuario")
-    private List<Endereco> enderecos = new ArrayList<Endereco>();
+    // private List<Endereco> enderecos;
 
     public Usuario(DadosCadastroUsuario dados){
         this.ativo = true;

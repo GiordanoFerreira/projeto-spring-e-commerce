@@ -22,6 +22,11 @@ create table enderecos(
     uf char(2) not null,
     cidade varchar(100) not null,
 
-    usuario_id bigint,
+    usuario_id bigint not null,
     primary key(id)
 );
+
+alter table enderecos 
+add constraint fk_enderecos_usuarios 
+foreign key (usuario_id) 
+references usuarios(id); 

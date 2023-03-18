@@ -18,10 +18,10 @@ public class EnderecoController {
 
     @Autowired
     private EnderecoRepository repository;
-    
+
     @PostMapping
     @Transactional
-    public void cadastro(@RequestBody DadosCadastroEndereco dados){
+    public void cadastro(@RequestBody DadosCadastroEndereco dados) {
         repository.save(new Endereco(dados));
     }
 }

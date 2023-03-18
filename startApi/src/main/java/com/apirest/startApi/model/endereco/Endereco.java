@@ -2,12 +2,11 @@ package com.apirest.startApi.model.endereco;
 
 import com.apirest.startApi.model.usuario.Usuario;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -34,10 +33,8 @@ public class Endereco {
     private String bairro;
     private String cep;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinTable(name = "usuario_endereco", joinColumns = { @JoinColumn(name = "usuario_id") }, inverseJoinColumns = { @JoinColumn(name = "endereco_id") })
+    @ManyToOne()
     private Usuario usuario;
-
 
     public Endereco(DadosCadastroEndereco dados) {
         this.logradouro = dados.logradouro();

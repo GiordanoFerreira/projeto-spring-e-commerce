@@ -1,9 +1,16 @@
 package com.apirest.startApi.model.usuario;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.apirest.startApi.model.endereco.Endereco;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -25,7 +32,9 @@ public class Usuario {
     private String senha;
     private String cpf;
     private boolean ativo;
-    // private List<Endereco> enderecos;
+
+    @OneToMany(mappedBy = "usuario")
+    private List<Endereco> enderecos = new ArrayList<Endereco>();
 
     public Usuario(DadosCadastroUsuario dados){
         this.ativo = true;
@@ -33,5 +42,6 @@ public class Usuario {
         this.email = dados.email();
         this.senha = dados.senha();
         this.cpf = dados.cpf();
+        this.enderecos = dados.enderecos();
     }
 }

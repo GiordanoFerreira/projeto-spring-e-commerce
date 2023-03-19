@@ -1,21 +1,22 @@
 package com.apirest.startApi.model.usuario;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-
-import com.apirest.startApi.model.endereco.Endereco;
-
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Set;
 
 import com.apirest.startApi.model.endereco.Endereco;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -28,18 +29,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Usuario {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Usuario implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
+    @Id @Column @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nome;
     private String email;
     private String senha;
     private String cpf;
     private boolean ativo;
-    // private List<Endereco> enderecos;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id")
+    private Set<Endereco> enderecos;
 
     public Usuario(DadosCadastroUsuario dados){
         this.ativo = true;

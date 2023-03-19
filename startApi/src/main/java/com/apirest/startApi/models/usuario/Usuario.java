@@ -1,9 +1,9 @@
-package com.apirest.startApi.model.usuario;
+package com.apirest.startApi.models.usuario;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.apirest.startApi.model.endereco.Endereco;
+import com.apirest.startApi.models.endereco.Endereco;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

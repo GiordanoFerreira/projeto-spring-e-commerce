@@ -1,9 +1,8 @@
-package com.apirest.startApi.model.endereco;
+package com.apirest.startApi.models.endereco;
 
-import com.apirest.startApi.model.usuario.Usuario;
+import com.apirest.startApi.models.usuario.Usuario;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

@@ -1,4 +1,4 @@
-package com.apirest.startApi.model.endereco;
+package com.apirest.startApi.models.endereco;
 
 public record DadosListagemEndereco(Long id, String logradouro, String cidade, String uf, String complemento, String numero, String bairro, String cep) {
 

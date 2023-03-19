@@ -3,7 +3,6 @@ package com.apirest.startApi.model.endereco;
 import com.apirest.startApi.model.usuario.Usuario;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,7 +31,7 @@ public class Endereco{
     private String numero;
     private String bairro;
     private String cep;
-    
+
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Usuario usuario;
@@ -47,5 +46,5 @@ public class Endereco{
         this.cep = dados.cep();
     }
 
-    
+
 }

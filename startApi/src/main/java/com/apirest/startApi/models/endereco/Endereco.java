@@ -33,7 +33,7 @@ public class Endereco{
     private String cep;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
     private Usuario usuario;
 
     public Endereco(DadosCadastroEndereco dados) {

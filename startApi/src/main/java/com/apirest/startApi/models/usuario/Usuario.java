@@ -40,12 +40,21 @@ public class Usuario{
     private List<Endereco> enderecos = new ArrayList<Endereco>();
 
 
-    public Usuario(DadosCadastroUsuario dados){
+    public Usuario(DadosCadastroUsuario dados) {
         this.ativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
         this.senha = dados.senha();
         this.cpf = dados.cpf();
         this.enderecos = dados.enderecos();
+    }
+
+    public void atualizarInformacoes(DadosAtualizacaoUsuario dados) {
+        if (dados.email() != null){
+            this.email = dados.email();
+        }
+        if (dados.senha() != null){
+            this.senha = dados.senha();
+        }
     }
 }

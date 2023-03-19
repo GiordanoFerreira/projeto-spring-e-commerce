@@ -7,10 +7,10 @@ import com.apirest.startApi.model.endereco.Endereco;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -35,8 +35,9 @@ public class Usuario {
     private String senha;
     private String cpf;
     private boolean ativo;
-    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.EAGER)
+
+    @OneToMany(targetEntity = Endereco.class, cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private List<Endereco> enderecos = new ArrayList<Endereco>();
 
     public Usuario(DadosCadastroUsuario dados) {

@@ -57,4 +57,8 @@ public class Usuario{
             this.senha = dados.senha();
         }
     }
+
+    public void excluir(){
+        this.ativo = false;
+    }
 }

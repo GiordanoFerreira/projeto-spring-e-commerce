@@ -5,13 +5,10 @@ import java.io.Serializable;
 import com.apirest.startApi.model.usuario.Usuario;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -25,9 +22,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Endereco implements Serializable{
+public class Endereco{
     
-    private static final long serialVersionUID = 1L;
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String logradouro;
@@ -38,7 +34,8 @@ public class Endereco implements Serializable{
     private String bairro;
     private String cep;
 
-    @ManyToOne(fetch = FetchType.EAGER,  cascade=CascadeType.ALL)
+
+    @ManyToOne(cascade = CascadeType.ALL)
     private Usuario usuario;
 
     public Endereco(DadosCadastroEndereco dados) {

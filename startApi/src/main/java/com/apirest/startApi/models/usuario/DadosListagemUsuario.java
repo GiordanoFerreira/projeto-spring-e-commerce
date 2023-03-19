@@ -1,4 +1,4 @@
-package com.apirest.startApi.model.usuario;
+package com.apirest.startApi.models.usuario;
 
 public record DadosListagemUsuario(Long id, String nome, String email, String senha, String cpf, boolean ativo) {
     

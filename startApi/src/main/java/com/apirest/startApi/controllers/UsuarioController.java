@@ -1,4 +1,4 @@
-package com.apirest.startApi.controller;
+package com.apirest.startApi.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -9,12 +9,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apirest.startApi.model.usuario.DadosCadastroUsuario;
-import com.apirest.startApi.model.usuario.DadosListagemUsuario;
-import com.apirest.startApi.model.usuario.Usuario;
+import com.apirest.startApi.models.usuario.DadosCadastroUsuario;
+import com.apirest.startApi.models.usuario.DadosListagemUsuario;
+import com.apirest.startApi.models.usuario.Usuario;
 import com.apirest.startApi.repository.UsuarioRepository;
 
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -25,7 +26,7 @@ public class UsuarioController {
 
     @PostMapping
     @Transactional
-    public void cadastro(@RequestBody DadosCadastroUsuario dados) {
+    public void cadastro(@RequestBody @Valid DadosCadastroUsuario dados) {
         repository.save(new Usuario(dados));
     }
 

@@ -1,5 +1,4 @@
-package com.apirest.startApi.controller;
-
+package com.apirest.startApi.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,12 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apirest.startApi.model.endereco.DadosCadastroEndereco;
-import com.apirest.startApi.model.endereco.DadosListagemEndereco;
-import com.apirest.startApi.model.endereco.Endereco;
+import com.apirest.startApi.models.endereco.DadosCadastroEndereco;
+import com.apirest.startApi.models.endereco.DadosListagemEndereco;
+import com.apirest.startApi.models.endereco.Endereco;
 import com.apirest.startApi.repository.EnderecoRepository;
 
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/enderecos")
@@ -27,7 +27,7 @@ public class EnderecoController {
 
     @PostMapping
     @Transactional
-    public void cadastro(@RequestBody DadosCadastroEndereco dados) {
+    public void cadastro(@RequestBody @Valid DadosCadastroEndereco dados) {
         repository.save(new Endereco(dados));
     }
 

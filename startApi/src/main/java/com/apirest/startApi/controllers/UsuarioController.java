@@ -43,4 +43,5 @@ public class UsuarioController {
         var usuario = repository.getReferenceById(dados.id());
         usuario.atualizarInformacoes(dados);
     }
+
 }

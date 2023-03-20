@@ -22,7 +22,6 @@ create table enderecos(
     uf char(2) not null,
     cidade varchar(100) not null,
 
-    usuario_id bigint,
     primary key(id)
 );
 

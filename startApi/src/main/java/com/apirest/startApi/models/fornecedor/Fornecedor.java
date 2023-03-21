@@ -7,7 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -36,4 +35,12 @@ public class Fornecedor {
         this.cnpj_cpf = dados.cnpj_cpf();
     }
 
+    public void atualizarFornecedor(DadosCadastroFornecedor dados){
+        if (dados.nome() != null){
+            this.nome = dados.nome();
+        }
+        if (dados.cnpj_cpf() != null){
+            this.cnpj_cpf = dados.cnpj_cpf();
+        }
+    }
 }

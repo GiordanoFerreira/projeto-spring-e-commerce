@@ -32,4 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 
-.startApi/src/main/resources/application.properties
+startApi/src/main/resources/application.properties

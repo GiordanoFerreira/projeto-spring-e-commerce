@@ -45,4 +45,19 @@ public class Produto {
         this.estoque = dados.estoque();
         this.fornecedores = dados.fornecedores();
     }
+
+    public void atualizarProduto(DadosAtualizacaoProduto dados){
+        if (dados.nome() != null){
+            this.nome = dados.nome();
+        }
+        if (dados.descricao() != null){
+            this.descricao = dados.descricao();
+        }
+        if (dados.preco() != 0){
+            this.preco = dados.preco();
+        }
+        if (dados.estoque() != 0){
+            this.estoque = dados.estoque();
+        }
+    }
 }

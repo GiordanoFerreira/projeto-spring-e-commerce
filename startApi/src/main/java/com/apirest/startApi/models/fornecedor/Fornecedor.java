@@ -35,7 +35,7 @@ public class Fornecedor {
         this.cnpj_cpf = dados.cnpj_cpf();
     }
 
-    public void atualizarFornecedor(DadosCadastroFornecedor dados){
+    public void atualizarFornecedor(DadosAtualizacaoFornecedor dados){
         if (dados.nome() != null){
             this.nome = dados.nome();
         }

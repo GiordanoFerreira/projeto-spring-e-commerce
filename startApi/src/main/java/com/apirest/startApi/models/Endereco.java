@@ -1,6 +1,7 @@
-package com.apirest.startApi.models.endereco;
+package com.apirest.startApi.models;
 
-import com.apirest.startApi.models.usuario.Usuario;
+import com.apirest.startApi.dto.endereco.DadosAtualizacaoEnderecoDto;
+import com.apirest.startApi.dto.endereco.DadosCadastroEnderecoDto;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -36,7 +37,7 @@ public class Endereco{
     @ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
     private Usuario usuario;
 
-    public Endereco(DadosCadastroEndereco dados) {
+    public Endereco(DadosCadastroEnderecoDto dados) {
         this.logradouro = dados.logradouro();
         this.cidade = dados.cidade();
         this.uf = dados.uf();
@@ -46,7 +47,7 @@ public class Endereco{
         this.cep = dados.cep();
     }
 
-    public void atualizarEndereco(DadosAtualizacaoEndereco dados){
+    public void atualizarEndereco(DadosAtualizacaoEnderecoDto dados){
         if(dados.logradouro() != null){
             this.logradouro = dados.logradouro();
         }

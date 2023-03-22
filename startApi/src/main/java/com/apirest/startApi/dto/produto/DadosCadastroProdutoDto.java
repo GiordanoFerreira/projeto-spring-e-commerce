@@ -1,4 +1,4 @@
-package com.apirest.startApi.models.produto;
+package com.apirest.startApi.dto.produto;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -6,12 +6,12 @@ import jakarta.validation.constraints.PositiveOrZero;
 
 import java.util.List;
 
-import com.apirest.startApi.models.fornecedor.Fornecedor;
+import com.apirest.startApi.models.Fornecedor;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 
-public record DadosCadastroProduto(
+public record DadosCadastroProdutoDto(
         @NotBlank String nome,
 
         @NotBlank String descricao,

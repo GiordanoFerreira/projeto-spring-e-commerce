@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apirest.startApi.models.fornecedor.DadosAtualizacaoFornecedor;
-import com.apirest.startApi.models.fornecedor.DadosCadastroFornecedor;
-import com.apirest.startApi.models.fornecedor.DadosListagemFornecedor;
-import com.apirest.startApi.models.fornecedor.Fornecedor;
+import com.apirest.startApi.dto.fornecedor.DadosAtualizacaoFornecedorDto;
+import com.apirest.startApi.dto.fornecedor.DadosCadastroFornecedorDto;
+import com.apirest.startApi.dto.fornecedor.DadosListagemFornecedorDto;
+import com.apirest.startApi.models.Fornecedor;
 import com.apirest.startApi.repository.FornecedorRepository;
 
 import jakarta.transaction.Transactional;
@@ -31,18 +31,18 @@ public class FornecedorController {
 
     @PostMapping
     @Transactional
-    public void cadastro(@RequestBody @Valid DadosCadastroFornecedor dados){
+    public void cadastro(@RequestBody @Valid DadosCadastroFornecedorDto dados){
         repository.save(new Fornecedor(dados));
     }
 
     @GetMapping
-    public Page<DadosListagemFornecedor> listar(@PageableDefault(sort = {"id"}) Pageable paginacao){
-        return repository.findAll(paginacao).map(DadosListagemFornecedor::new);
+    public Page<DadosListagemFornecedorDto> listar(@PageableDefault(sort = {"id"}) Pageable paginacao){
+        return repository.findAll(paginacao).map(DadosListagemFornecedorDto::new);
     }
 
     @PutMapping
     @Transactional
-    public void atualizar(@RequestBody @Valid DadosAtualizacaoFornecedor dados){
+    public void atualizar(@RequestBody @Valid DadosAtualizacaoFornecedorDto dados){
         var fornecedor = repository.getReferenceById(dados.id());
         fornecedor.atualizarFornecedor(dados);;
     }

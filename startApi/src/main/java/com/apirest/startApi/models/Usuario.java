@@ -1,9 +1,10 @@
-package com.apirest.startApi.models.usuario;
+package com.apirest.startApi.models;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.apirest.startApi.models.endereco.Endereco;
+import com.apirest.startApi.dto.usuario.DadosAtualizacaoUsuarioDto;
+import com.apirest.startApi.dto.usuario.DadosCadastroUsuarioDto;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -40,7 +41,7 @@ public class Usuario{
     private List<Endereco> enderecos = new ArrayList<Endereco>();
 
 
-    public Usuario(DadosCadastroUsuario dados) {
+    public Usuario(DadosCadastroUsuarioDto dados) {
         this.ativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
@@ -49,7 +50,7 @@ public class Usuario{
         this.enderecos = dados.enderecos();
     }
 
-    public void atualizarInformacoes(DadosAtualizacaoUsuario dados) {
+    public void atualizarInformacoes(DadosAtualizacaoUsuarioDto dados) {
         if (dados.email() != null){
             this.email = dados.email();
         }

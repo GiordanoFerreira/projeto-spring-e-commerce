@@ -1,9 +1,9 @@
-package com.apirest.startApi.models.endereco;
+package com.apirest.startApi.dto.endereco;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
-public record DadosCadastroEndereco(
+public record DadosCadastroEnderecoDto(
         @NotBlank String logradouro,
         @NotBlank String cidade,
         @NotBlank String uf,

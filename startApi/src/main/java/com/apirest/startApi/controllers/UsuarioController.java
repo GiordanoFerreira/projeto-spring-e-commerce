@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apirest.startApi.models.usuario.DadosAtualizacaoUsuario;
-import com.apirest.startApi.models.usuario.DadosCadastroUsuario;
-import com.apirest.startApi.models.usuario.DadosListagemUsuario;
-import com.apirest.startApi.models.usuario.Usuario;
+import com.apirest.startApi.dto.usuario.DadosAtualizacaoUsuarioDto;
+import com.apirest.startApi.dto.usuario.DadosCadastroUsuarioDto;
+import com.apirest.startApi.dto.usuario.DadosListagemUsuarioDto;
+import com.apirest.startApi.models.Usuario;
 import com.apirest.startApi.repository.UsuarioRepository;
 
 import jakarta.transaction.Transactional;
@@ -30,18 +30,18 @@ public class UsuarioController {
 
     @PostMapping
     @Transactional
-    public void cadastro(@RequestBody @Valid DadosCadastroUsuario dados) {
+    public void cadastro(@RequestBody @Valid DadosCadastroUsuarioDto dados) {
         repository.save(new Usuario(dados));
     }
 
     @GetMapping
-    public Page<DadosListagemUsuario> listar(Pageable paginacao) {
-        return repository.findAllByAtivoTrue(paginacao).map(DadosListagemUsuario :: new);
+    public Page<DadosListagemUsuarioDto> listar(Pageable paginacao) {
+        return repository.findAllByAtivoTrue(paginacao).map(DadosListagemUsuarioDto :: new);
     }
 
     @PutMapping
     @Transactional
-    public void atualizar(@RequestBody @Valid DadosAtualizacaoUsuario dados) {
+    public void atualizar(@RequestBody @Valid DadosAtualizacaoUsuarioDto dados) {
         var usuario = repository.getReferenceById(dados.id());
         usuario.atualizarInformacoes(dados);
     }

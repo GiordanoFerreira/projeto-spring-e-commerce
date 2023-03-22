@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apirest.startApi.models.produto.DadosAtualizacaoProduto;
-import com.apirest.startApi.models.produto.DadosCadastroProduto;
-import com.apirest.startApi.models.produto.DadosListagemProduto;
-import com.apirest.startApi.models.produto.Produto;
+import com.apirest.startApi.dto.produto.DadosAtualizacaoProdutoDto;
+import com.apirest.startApi.dto.produto.DadosCadastroProdutoDto;
+import com.apirest.startApi.dto.produto.DadosListagemProdutoDto;
+import com.apirest.startApi.models.Produto;
 import com.apirest.startApi.repository.ProdutoRepository;
 
 import jakarta.transaction.Transactional;
@@ -30,18 +30,18 @@ public class ProdutoController {
 
     @PostMapping
     @Transactional
-    public void cadastro(@RequestBody @Valid DadosCadastroProduto dados){
+    public void cadastro(@RequestBody @Valid DadosCadastroProdutoDto dados){
         repository.save(new Produto(dados));
     }
 
     @GetMapping
-    public Page<DadosListagemProduto> listar(Pageable paginacao){
-        return repository.findAll(paginacao).map(DadosListagemProduto :: new);
+    public Page<DadosListagemProdutoDto> listar(Pageable paginacao){
+        return repository.findAll(paginacao).map(DadosListagemProdutoDto :: new);
     }
 
     @PutMapping
     @Transactional
-    public void atualizar(@RequestBody @Valid DadosAtualizacaoProduto dados){
+    public void atualizar(@RequestBody @Valid DadosAtualizacaoProdutoDto dados){
         var produto = repository.getReferenceById(dados.id());
         produto.atualizarProduto(dados);
     }

@@ -1,6 +1,7 @@
-package com.apirest.startApi.models.fornecedor;
+package com.apirest.startApi.models;
 
-import com.apirest.startApi.models.produto.Produto;
+import com.apirest.startApi.dto.fornecedor.DadosAtualizacaoFornecedorDto;
+import com.apirest.startApi.dto.fornecedor.DadosCadastroFornecedorDto;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -30,12 +31,12 @@ public class Fornecedor {
     @ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
     private Produto produto;
 
-    public Fornecedor(DadosCadastroFornecedor dados){
+    public Fornecedor(DadosCadastroFornecedorDto dados){
         this.nome = dados.nome();
         this.cnpj_cpf = dados.cnpj_cpf();
     }
 
-    public void atualizarFornecedor(DadosAtualizacaoFornecedor dados){
+    public void atualizarFornecedor(DadosAtualizacaoFornecedorDto dados){
         if (dados.nome() != null){
             this.nome = dados.nome();
         }

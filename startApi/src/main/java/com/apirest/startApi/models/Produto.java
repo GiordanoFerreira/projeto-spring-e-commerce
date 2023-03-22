@@ -1,9 +1,10 @@
-package com.apirest.startApi.models.produto;
+package com.apirest.startApi.models;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.apirest.startApi.models.fornecedor.Fornecedor;
+import com.apirest.startApi.dto.produto.DadosAtualizacaoProdutoDto;
+import com.apirest.startApi.dto.produto.DadosCadastroProdutoDto;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -38,7 +39,7 @@ public class Produto {
     @JoinColumn(name = "produto_id", referencedColumnName = "id")
     List<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
 
-    public Produto(DadosCadastroProduto dados){
+    public Produto(DadosCadastroProdutoDto dados){
         this.nome = dados.nome();
         this.descricao = dados.descricao();
         this.preco = dados.preco();
@@ -46,7 +47,7 @@ public class Produto {
         this.fornecedores = dados.fornecedores();
     }
 
-    public void atualizarProduto(DadosAtualizacaoProduto dados){
+    public void atualizarProduto(DadosAtualizacaoProdutoDto dados){
         if (dados.nome() != null){
             this.nome = dados.nome();
         }

@@ -1,10 +1,10 @@
-package com.apirest.startApi.models.produto;
+package com.apirest.startApi.dto.produto;
 
-import com.apirest.startApi.models.fornecedor.DadosAtualizacaoFornecedor;
+import com.apirest.startApi.dto.fornecedor.DadosAtualizacaoFornecedorDto;
 
 import jakarta.validation.constraints.NotNull;
 
-public record DadosAtualizacaoProduto(
+public record DadosAtualizacaoProdutoDto(
         @NotNull Long id,
         
         String nome,
@@ -15,6 +15,6 @@ public record DadosAtualizacaoProduto(
         
         Integer estoque,
         
-        DadosAtualizacaoFornecedor fornecedor) {
+        DadosAtualizacaoFornecedorDto fornecedor) {
 
 }

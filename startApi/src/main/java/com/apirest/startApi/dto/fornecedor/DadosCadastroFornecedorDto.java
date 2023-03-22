@@ -1,9 +1,9 @@
-package com.apirest.startApi.models.fornecedor;
+package com.apirest.startApi.dto.fornecedor;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
-public record DadosCadastroFornecedor(
+public record DadosCadastroFornecedorDto(
 
     @NotBlank
     String nome,

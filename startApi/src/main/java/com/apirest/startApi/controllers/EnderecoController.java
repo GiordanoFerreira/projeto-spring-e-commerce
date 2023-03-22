@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.apirest.startApi.models.endereco.DadosAtualizacaoEndereco;
-import com.apirest.startApi.models.endereco.DadosCadastroEndereco;
-import com.apirest.startApi.models.endereco.DadosListagemEndereco;
-import com.apirest.startApi.models.endereco.Endereco;
+import com.apirest.startApi.dto.endereco.DadosAtualizacaoEnderecoDto;
+import com.apirest.startApi.dto.endereco.DadosCadastroEnderecoDto;
+import com.apirest.startApi.dto.endereco.DadosListagemEnderecoDto;
+import com.apirest.startApi.models.Endereco;
 import com.apirest.startApi.repository.EnderecoRepository;
 
 import jakarta.transaction.Transactional;
@@ -31,18 +31,18 @@ public class EnderecoController {
 
     @PostMapping
     @Transactional
-    public void cadastro(@RequestBody @Valid DadosCadastroEndereco dados) {
+    public void cadastro(@RequestBody @Valid DadosCadastroEnderecoDto dados) {
         repository.save(new Endereco(dados));
     }
 
     @GetMapping
-    public Page<DadosListagemEndereco> listar(@PageableDefault(sort = {"id"}) Pageable paginacao){
-        return repository.findAll(paginacao).map(DadosListagemEndereco::new);
+    public Page<DadosListagemEnderecoDto> listar(@PageableDefault(sort = {"id"}) Pageable paginacao){
+        return repository.findAll(paginacao).map(DadosListagemEnderecoDto::new);
     }
 
     @PutMapping
     @Transactional
-    public void atualizar(@RequestBody @Valid DadosAtualizacaoEndereco dados){
+    public void atualizar(@RequestBody @Valid DadosAtualizacaoEnderecoDto dados){
         var endereco = repository.getReferenceById(dados.id());
         endereco.atualizarEndereco(dados);
     }

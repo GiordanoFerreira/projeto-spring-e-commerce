@@ -1,9 +1,9 @@
-package com.apirest.startApi.models.endereco;
+package com.apirest.startApi.dto.endereco;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-public record DadosAtualizacaoEndereco(
+public record DadosAtualizacaoEnderecoDto(
     
     
     @NotNull Long id,

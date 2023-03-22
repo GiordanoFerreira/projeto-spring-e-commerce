@@ -1,8 +1,8 @@
-package com.apirest.startApi.models.fornecedor;
+package com.apirest.startApi.dto.fornecedor;
 
 import jakarta.validation.constraints.NotNull;
 
-public record DadosAtualizacaoFornecedor(
+public record DadosAtualizacaoFornecedorDto(
         @NotNull Long id,
         
         String nome,

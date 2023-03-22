@@ -10,14 +10,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Table(name = "carrinhoCompras")
+@Table(name = "carrinho_compras")
 @Entity(name = "CarrinhoCompra")
 @Getter
 @NoArgsConstructor
@@ -33,7 +33,7 @@ public class CarrinhoCompra {
     private Date dataEntrada;
     private Date dataEmissao;
 
-    @OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
-    private List<ItemProduto> itensProdutos = new ArrayList<ItemProduto>();
+    @OneToMany(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
+    private List<ItemCarrinho> itensCarrinho = new ArrayList<ItemCarrinho>();
 
 }

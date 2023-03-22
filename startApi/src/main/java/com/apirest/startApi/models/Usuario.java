@@ -38,8 +38,7 @@ public class Usuario {
     private String cpf;
     private boolean ativo;
 
-    @OneToMany(targetEntity = Endereco.class, cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH,
-            CascadeType.PERSIST })
+    @OneToMany(targetEntity = Endereco.class, cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private List<Endereco> enderecos = new ArrayList<Endereco>();
 

@@ -14,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -39,7 +40,11 @@ public class Produto {
 
     @OneToMany(targetEntity = Fornecedor.class, cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
     @JoinColumn(name = "produto_id", referencedColumnName = "id")
-    List<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
+    private List<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
+
+    @OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
+    @JoinColumn(name = "produto_id", referencedColumnName = "id")
+    private ItemProduto itemProduto = new ItemProduto();
 
     public Produto(DadosCadastroProdutoDto dados) {
         this.nome = dados.nome();

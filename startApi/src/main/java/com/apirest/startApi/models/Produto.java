@@ -44,7 +44,7 @@ public class Produto {
 
     @OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
     @JoinColumn(name = "produto_id", referencedColumnName = "id")
-    private ItemProduto itemProduto = new ItemProduto();
+    private ItemCarrinho itemProduto = new ItemCarrinho();
 
     public Produto(DadosCadastroProdutoDto dados) {
         this.nome = dados.nome();

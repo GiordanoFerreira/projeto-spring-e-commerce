@@ -1,5 +1,7 @@
 package com.apirest.startApi.models;
 
+import com.apirest.startApi.dto.itemCarrinho.DadosCadastroItemCarrinhoDto;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,13 +15,13 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Table(name = "itensProdutos")
-@Entity(name = "ItemProduto")
+@Table(name = "itens_carrinhos")
+@Entity(name = "ItemCarrinho")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class ItemProduto {
+public class ItemCarrinho {
 
     @Id
     @Column
@@ -30,4 +32,9 @@ public class ItemProduto {
     private Produto produto;
 
     private Integer quantidade;
+
+    public ItemCarrinho(DadosCadastroItemCarrinhoDto dados){
+        this.produto = dados.produto();
+        this.quantidade = dados.quantidade();
+    }
 }

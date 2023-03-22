@@ -13,7 +13,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Table(name = "formasPagamentos")
+@Table(name = "formas_pagamentos")
 @Entity(name = "FormaPagamento")
 @Getter
 @NoArgsConstructor

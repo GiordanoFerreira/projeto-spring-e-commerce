@@ -10,7 +10,7 @@ public record DadosCadastroItemProdutoDto(
     @NotNull
     Produto produto,
     @NotNull @Positive
-    Double quantidade
+    Integer quantidade
 
 ) {
     

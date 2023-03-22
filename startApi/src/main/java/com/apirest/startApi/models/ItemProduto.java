@@ -1,5 +1,7 @@
 package com.apirest.startApi.models;
 
+import com.apirest.startApi.dto.itemProduto.DadosCadastroItemProdutoDto;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,4 +32,10 @@ public class ItemProduto {
     private Produto produto;
 
     private Integer quantidade;
+
+    public ItemProduto(DadosCadastroItemProdutoDto dados){
+        this.produto = dados.produto();
+        this.quantidade = dados.quantidade();
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.apirest.startApi.models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -33,6 +34,6 @@ public class CarrinhoCompra {
     private Date dataEmissao;
 
     @OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
-    private List<ItemProduto> itensProdutos;
+    private List<ItemProduto> itensProdutos = new ArrayList<ItemProduto>();
 
 }

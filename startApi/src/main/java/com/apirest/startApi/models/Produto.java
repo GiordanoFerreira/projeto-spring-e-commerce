@@ -27,8 +27,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Produto {
-    
-    @Id @Column @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String descricao;
@@ -39,7 +41,7 @@ public class Produto {
     @JoinColumn(name = "produto_id", referencedColumnName = "id")
     List<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
 
-    public Produto(DadosCadastroProdutoDto dados){
+    public Produto(DadosCadastroProdutoDto dados) {
         this.nome = dados.nome();
         this.descricao = dados.descricao();
         this.preco = dados.preco();
@@ -47,17 +49,17 @@ public class Produto {
         this.fornecedores = dados.fornecedores();
     }
 
-    public void atualizarProduto(DadosAtualizacaoProdutoDto dados){
-        if (dados.nome() != null){
+    public void atualizarProduto(DadosAtualizacaoProdutoDto dados) {
+        if (dados.nome() != null) {
             this.nome = dados.nome();
         }
-        if (dados.descricao() != null){
+        if (dados.descricao() != null) {
             this.descricao = dados.descricao();
         }
-        if (dados.preco() != 0){
+        if (dados.preco() != 0) {
             this.preco = dados.preco();
         }
-        if (dados.estoque() != 0){
+        if (dados.estoque() != 0) {
             this.estoque = dados.estoque();
         }
     }

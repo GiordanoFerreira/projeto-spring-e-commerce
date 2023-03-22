@@ -4,6 +4,7 @@ import com.apirest.startApi.dto.fornecedor.DadosAtualizacaoFornecedorDto;
 import com.apirest.startApi.dto.fornecedor.DadosCadastroFornecedorDto;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -22,8 +23,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Fornecedor {
-    
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String cnpj_cpf;
@@ -31,16 +34,16 @@ public class Fornecedor {
     @ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
     private Produto produto;
 
-    public Fornecedor(DadosCadastroFornecedorDto dados){
+    public Fornecedor(DadosCadastroFornecedorDto dados) {
         this.nome = dados.nome();
         this.cnpj_cpf = dados.cnpj_cpf();
     }
 
-    public void atualizarFornecedor(DadosAtualizacaoFornecedorDto dados){
-        if (dados.nome() != null){
+    public void atualizarFornecedor(DadosAtualizacaoFornecedorDto dados) {
+        if (dados.nome() != null) {
             this.nome = dados.nome();
         }
-        if (dados.cnpj_cpf() != null){
+        if (dados.cnpj_cpf() != null) {
             this.cnpj_cpf = dados.cnpj_cpf();
         }
     }

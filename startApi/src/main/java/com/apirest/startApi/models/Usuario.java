@@ -26,9 +26,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Usuario{
-    
-    @Id @Column @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Usuario {
+
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String email;
@@ -36,10 +38,10 @@ public class Usuario{
     private String cpf;
     private boolean ativo;
 
-    @OneToMany(targetEntity = Endereco.class, cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
+    @OneToMany(targetEntity = Endereco.class, cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH,
+            CascadeType.PERSIST })
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private List<Endereco> enderecos = new ArrayList<Endereco>();
-
 
     public Usuario(DadosCadastroUsuarioDto dados) {
         this.ativo = true;
@@ -51,15 +53,15 @@ public class Usuario{
     }
 
     public void atualizarInformacoes(DadosAtualizacaoUsuarioDto dados) {
-        if (dados.email() != null){
+        if (dados.email() != null) {
             this.email = dados.email();
         }
-        if (dados.senha() != null){
+        if (dados.senha() != null) {
             this.senha = dados.senha();
         }
     }
 
-    public void excluir(){
+    public void excluir() {
         this.ativo = false;
     }
 }

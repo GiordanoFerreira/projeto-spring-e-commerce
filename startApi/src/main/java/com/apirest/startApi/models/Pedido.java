@@ -1,5 +1,7 @@
 package com.apirest.startApi.models;
 
+import java.util.Date;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,21 +15,34 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Table(name = "itensProdutos")
-@Entity(name = "ItemProduto")
+@Table(name = "pedidos")
+@Entity(name = "Pedido")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class ItemProduto {
+public class Pedido {
 
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
-    private Produto produto;
+    private Usuario usuario;
 
-    private Integer quantidade;
+    @OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
+    private Endereco endereco;
+
+    @OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
+    private FormaPagamento formaPagamento;
+
+    @OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
+    private CarrinhoCompra carrinhoCompra;
+
+    private Date dataEntrada;
+    private Date dataEmissao;
+    private Double desconto;
+    private Double valorTotal;
+
 }

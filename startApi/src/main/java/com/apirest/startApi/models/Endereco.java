@@ -4,6 +4,7 @@ import com.apirest.startApi.dto.endereco.DadosAtualizacaoEnderecoDto;
 import com.apirest.startApi.dto.endereco.DadosCadastroEnderecoDto;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,9 +22,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Endereco{
-    
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class Endereco {
+
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String logradouro;
     private String cidade;
@@ -32,7 +35,6 @@ public class Endereco{
     private String numero;
     private String bairro;
     private String cep;
-
 
     @ManyToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
     private Usuario usuario;
@@ -47,26 +49,26 @@ public class Endereco{
         this.cep = dados.cep();
     }
 
-    public void atualizarEndereco(DadosAtualizacaoEnderecoDto dados){
-        if(dados.logradouro() != null){
+    public void atualizarEndereco(DadosAtualizacaoEnderecoDto dados) {
+        if (dados.logradouro() != null) {
             this.logradouro = dados.logradouro();
         }
-        if(dados.bairro() != null){
+        if (dados.bairro() != null) {
             this.bairro = dados.bairro();
         }
-        if(dados.cep() != null){
+        if (dados.cep() != null) {
             this.cep = dados.cep();
         }
-        if(dados.numero() != null){
+        if (dados.numero() != null) {
             this.numero = dados.numero();
         }
-        if(dados.complemento() != null){
+        if (dados.complemento() != null) {
             this.complemento = dados.complemento();
         }
-        if(dados.cidade() != null){
+        if (dados.cidade() != null) {
             this.cidade = dados.cidade();
         }
-        if(dados.uf() != null){
+        if (dados.uf() != null) {
             this.uf = dados.uf();
         }
     }

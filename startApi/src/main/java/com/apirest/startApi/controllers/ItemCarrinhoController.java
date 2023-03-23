@@ -38,6 +38,7 @@ public class ItemCarrinhoController {
         if(produtoExistente != null){
             dados.setProduto(produtoExistente);
             dados.setProduto_nome(produtoExistente.getNome());
+            dados.setValor(produtoExistente.getPreco());
             repositoryItemCarrinhoRepository.save(new ItemCarrinho(dados));
         }
     }

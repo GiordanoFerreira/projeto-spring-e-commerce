@@ -1,6 +1,8 @@
 package com.apirest.startApi.models;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import com.apirest.startApi.dto.usuario.DadosAtualizacaoUsuarioDto;
@@ -33,6 +35,8 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    private String telefone;
+    private String dataCadastro;
     private String email;
     private String senha;
     private String cpf;
@@ -45,10 +49,12 @@ public class Usuario {
     public Usuario(DadosCadastroUsuarioDto dados) {
         this.ativo = true;
         this.nome = dados.nome();
+        this.telefone = dados.telefone();
         this.email = dados.email();
         this.senha = dados.senha();
         this.cpf = dados.cpf();
         this.enderecos = dados.enderecos();
+        this.dataCadastro = new SimpleDateFormat("dd/MM/yyy hh:mm").format(Calendar.getInstance().getTime());
     }
 
     public void atualizarInformacoes(DadosAtualizacaoUsuarioDto dados) {
@@ -58,9 +64,13 @@ public class Usuario {
         if (dados.senha() != null) {
             this.senha = dados.senha();
         }
+        if (dados.telefone() != null){
+            this.telefone = dados.telefone();
+        }
     }
 
     public void excluir() {
         this.ativo = false;
     }
+
 }

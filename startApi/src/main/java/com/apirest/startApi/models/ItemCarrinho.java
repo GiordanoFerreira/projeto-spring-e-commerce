@@ -37,9 +37,12 @@ public class ItemCarrinho {
 
     private String produtoNome;
 
+    private Double valor;
+
     public ItemCarrinho(DadosCadastroItemCarrinhoDto dados){
         this.produto = dados.getProduto();
         this.quantidade = dados.getQuantidade();
-        this.produtoNome = dados.getProduto_nome(); 
+        this.produtoNome = dados.getProduto_nome();
+        this.valor = dados.getValor();
     }
 }

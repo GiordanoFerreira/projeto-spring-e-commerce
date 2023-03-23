@@ -1,6 +1,5 @@
 package com.apirest.startApi.dto.itemCarrinho;
 
-import com.apirest.startApi.models.ItemCarrinho;
 import com.apirest.startApi.models.Produto;
 
 import jakarta.validation.constraints.NotNull;
@@ -26,5 +25,12 @@ public class DadosCadastroItemCarrinhoDto {
     private Produto produto;
 
     private String produto_nome;
+
+    private Double valor;
+
+    public void setValor(Double valor){
+        this.valor = valor * quantidade;
+    }
+
 
 }

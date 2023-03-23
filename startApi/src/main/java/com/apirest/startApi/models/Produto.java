@@ -1,6 +1,9 @@
 package com.apirest.startApi.models;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import com.apirest.startApi.dto.produto.DadosAtualizacaoProdutoDto;
@@ -9,13 +12,11 @@ import com.apirest.startApi.dto.produto.DadosCadastroProdutoDto;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -38,6 +39,7 @@ public class Produto {
     private String descricao;
     private double preco;
     private Integer estoque;
+    private String dataCadastro;
 
     @OneToMany(targetEntity = Fornecedor.class, cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
     @JoinColumn(name = "produto_id", referencedColumnName = "id")
@@ -49,6 +51,7 @@ public class Produto {
         this.preco = dados.preco();
         this.estoque = dados.estoque();
         this.fornecedores = dados.fornecedores();
+        this.dataCadastro = new SimpleDateFormat("dd/MM/yyy hh:mm").format(Calendar.getInstance().getTime());
     }
 
     public void atualizarProduto(DadosAtualizacaoProdutoDto dados) {

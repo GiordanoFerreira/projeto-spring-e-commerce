@@ -1,5 +1,6 @@
 package com.apirest.startApi.models;
 
+import com.apirest.startApi.dto.itemCarrinho.DadosAtualizacaoItemCarrinhoDto;
 import com.apirest.startApi.dto.itemCarrinho.DadosCadastroItemCarrinhoDto;
 
 import jakarta.persistence.CascadeType;
@@ -44,5 +45,11 @@ public class ItemCarrinho {
         this.quantidade = dados.getQuantidade();
         this.produtoNome = dados.getProduto_nome();
         this.valor = dados.getValor();
+    }
+
+    public void atualizarItemCarrinho(DadosAtualizacaoItemCarrinhoDto dados){
+        if(dados.quantidade() != null){
+            this.quantidade = dados.quantidade();
+        }
     }
 }

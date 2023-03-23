@@ -9,6 +9,7 @@ import com.apirest.startApi.dto.produto.DadosCadastroProdutoDto;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -41,10 +42,6 @@ public class Produto {
     @OneToMany(targetEntity = Fornecedor.class, cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
     @JoinColumn(name = "produto_id", referencedColumnName = "id")
     private List<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
-
-    @OneToOne(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
-    @JoinColumn(name = "produto_id", referencedColumnName = "id")
-    private ItemCarrinho itemProduto = new ItemCarrinho();
 
     public Produto(DadosCadastroProdutoDto dados) {
         this.nome = dados.nome();

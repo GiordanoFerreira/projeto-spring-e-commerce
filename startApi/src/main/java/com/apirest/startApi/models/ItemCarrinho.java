@@ -14,10 +14,12 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Table(name = "itens_carrinhos")
 @Entity(name = "ItemCarrinho")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -33,8 +35,11 @@ public class ItemCarrinho {
 
     private Integer quantidade;
 
+    private String produtoNome;
+
     public ItemCarrinho(DadosCadastroItemCarrinhoDto dados){
-        this.produto = dados.produto();
-        this.quantidade = dados.quantidade();
+        this.produto = dados.getProduto();
+        this.quantidade = dados.getQuantidade();
+        this.produtoNome = dados.getProduto_nome(); 
     }
 }

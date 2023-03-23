@@ -12,12 +12,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Table(name = "carrinho_compras")
+@Table(name = "carrinhos_compras")
 @Entity(name = "CarrinhoCompra")
 @Getter
 @NoArgsConstructor
@@ -30,7 +32,9 @@ public class CarrinhoCompra {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Double valorTotal;
+    @Temporal(TemporalType.DATE)
     private Date dataEntrada;
+    @Temporal(TemporalType.DATE)
     private Date dataEmissao;
 
     @OneToMany(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })

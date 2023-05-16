@@ -17,6 +17,7 @@ import com.apirest.startApi.dto.usuario.DadosCadastroUsuarioDto;
 import com.apirest.startApi.dto.usuario.DadosListagemUsuarioDto;
 import com.apirest.startApi.models.Usuario;
 import com.apirest.startApi.repository.UsuarioRepository;
+import com.apirest.startApi.services.UsuarioService;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -28,6 +29,9 @@ public class UsuarioController {
     @Autowired
     private UsuarioRepository repository;
 
+    @Autowired
+    private UsuarioService service;
+
     @PostMapping
     @Transactional
     public void cadastro(@RequestBody @Valid DadosCadastroUsuarioDto dados) {
@@ -36,7 +40,8 @@ public class UsuarioController {
 
     @GetMapping
     public Page<DadosListagemUsuarioDto> listar(Pageable paginacao) {
-        return repository.findAllByAtivoTrue(paginacao).map(DadosListagemUsuarioDto :: new);
+        Page<DadosListagemUsuarioDto> result = service.listar(paginacao);
+        return result;
     }
 
     @PutMapping

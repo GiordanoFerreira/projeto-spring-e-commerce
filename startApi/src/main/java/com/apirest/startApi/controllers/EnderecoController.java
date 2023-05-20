@@ -9,15 +9,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.apirest.startApi.dto.endereco.DadosAtualizacaoEnderecoDto;
 import com.apirest.startApi.dto.endereco.DadosCadastroEnderecoDto;
 import com.apirest.startApi.dto.endereco.DadosListagemEnderecoDto;
-import com.apirest.startApi.models.Endereco;
-import com.apirest.startApi.repository.EnderecoRepository;
+import com.apirest.startApi.services.EnderecoService;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -27,30 +26,30 @@ import jakarta.validation.Valid;
 public class EnderecoController {
 
     @Autowired
-    private EnderecoRepository repository;
+    private EnderecoService service;
 
     @PostMapping
     @Transactional
     public void cadastro(@RequestBody @Valid DadosCadastroEnderecoDto dados) {
-        repository.save(new Endereco(dados));
+        service.cadastro(dados);
     }
 
     @GetMapping
-    public Page<DadosListagemEnderecoDto> listar(@PageableDefault(sort = {"id"}) Pageable paginacao){
-        return repository.findAll(paginacao).map(DadosListagemEnderecoDto::new);
+    public Page<DadosListagemEnderecoDto> listar(@PageableDefault(sort = { "id" }) Pageable paginacao) {
+        Page<DadosListagemEnderecoDto> result = service.listar(paginacao);
+        return result;
     }
 
     @PutMapping
     @Transactional
-    public void atualizar(@RequestBody @Valid DadosAtualizacaoEnderecoDto dados){
-        var endereco = repository.getReferenceById(dados.id());
-        endereco.atualizarEndereco(dados);
+    public void atualizar(@RequestBody @Valid DadosAtualizacaoEnderecoDto dados) {
+        service.atualizar(dados);
     }
 
     @DeleteMapping("/{id}")
     @Transactional
-    public void excluir(@PathVariable Long id){
-        repository.deleteById(id);
+    public void excluir(@PathVariable Long id) {
+        service.excluir(id);
     }
 
 }

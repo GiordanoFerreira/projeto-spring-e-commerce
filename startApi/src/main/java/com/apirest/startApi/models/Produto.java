@@ -42,6 +42,9 @@ public class Produto {
     private Integer estoque;
     private String dataCadastro;
 
+    @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ItemCarrinho> itens = new ArrayList<>();
+
     @OneToMany(targetEntity = Fornecedor.class, cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
     @JoinColumn(name = "produto_id", referencedColumnName = "id")
     private List<Fornecedor> fornecedores = new ArrayList<Fornecedor>();

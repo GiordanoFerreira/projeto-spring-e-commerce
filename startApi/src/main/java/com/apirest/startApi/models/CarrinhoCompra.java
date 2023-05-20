@@ -37,7 +37,7 @@ public class CarrinhoCompra {
     @Temporal(TemporalType.DATE)
     private Date dataEmissao;
 
-    @OneToMany(cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
+    @OneToMany(mappedBy = "carrinhoCompra", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
     private List<ItemCarrinho> itensCarrinho = new ArrayList<ItemCarrinho>();
 
 }

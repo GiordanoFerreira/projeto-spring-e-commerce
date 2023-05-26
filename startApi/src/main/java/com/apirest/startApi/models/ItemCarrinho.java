@@ -8,7 +8,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -32,11 +31,9 @@ public class ItemCarrinho {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "carrinho_compra_id")
     private CarrinhoCompra carrinhoCompra;
 
     @ManyToOne
-    @JoinColumn(name = "produto_id")
     private Produto produto;
 
     private Integer quantidade;
@@ -48,7 +45,7 @@ public class ItemCarrinho {
     public ItemCarrinho(DadosCadastroItemCarrinhoDto dados){
         this.produto = dados.getProduto();
         this.quantidade = dados.getQuantidade();
-        this.produtoNome = dados.getProduto_nome();
+        this.carrinhoCompra = dados.getCarrinhoCompra();
         this.valor = dados.getValor();
     }
 

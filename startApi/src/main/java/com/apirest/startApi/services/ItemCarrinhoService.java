@@ -24,7 +24,7 @@ public class ItemCarrinhoService {
     private ProdutoRepository repositoryProduto;
 
     public void cadastro(@RequestBody @Valid DadosCadastroItemCarrinhoDto dados) throws Exception {
-        Produto produtoExistente = repositoryProduto.findById(dados.getIdProduto()).orElse(null);
+        Produto produtoExistente = repositoryProduto.findById(dados.getProduto().getId()).orElse(null);
         if (produtoExistente != null) {
             if (produtoExistente.getEstoque() < dados.getQuantidade()) {
                 throw new Exception("A quantidade no Estoque (" + produtoExistente.getEstoque()

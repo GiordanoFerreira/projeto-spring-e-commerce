@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.apirest.startApi.dto.carrinhoCompra.DadosCadastroCarrinhoCompraDto;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,7 +33,9 @@ public class CarrinhoCompra {
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private Double valorTotal;
+
     @Temporal(TemporalType.DATE)
     private Date dataEntrada;
     @Temporal(TemporalType.DATE)
@@ -40,4 +44,6 @@ public class CarrinhoCompra {
     @OneToMany(mappedBy = "carrinhoCompra", cascade = { CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST })
     private List<ItemCarrinho> itensCarrinho = new ArrayList<ItemCarrinho>();
 
+    public CarrinhoCompra(DadosCadastroCarrinhoCompraDto dados){
+    }
 }

@@ -17,14 +17,13 @@ import lombok.Setter;
 public class DadosCadastroItemCarrinhoDto {
 
     @NotNull
-    private Long idProduto;
-
-    @NotNull
     @Positive
     private Integer quantidade;
 
+    @NotNull
     private Produto produto;
 
+    @NotNull
     private CarrinhoCompra carrinhoCompra;
 
     private String produto_nome;
